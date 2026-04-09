@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Metrics — help users manage</title>
-    <meta name="description" content="help users manage and organize household chores and tasks" />
+    <meta name="description" content="Track your family's chore completion and performance metrics" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -12,23 +15,308 @@
       <nav data-testid="primary-nav">
         <span class="brand">help users manage</span>
         <div class="nav-links">
-        <a href="./index.html" class="nav-link">Home</a>
-        <a href="./task-list.html" class="nav-link">task list</a>
-        <a href="./login.html" class="nav-link">login</a>
-        <a href="./metrics.html" class="nav-link active">Metrics</a>
+          <a href="./index.html" class="nav-link">Home</a>
+          <a href="./task-list.html" class="nav-link">task list</a>
+          <a href="./login.html" class="nav-link">login</a>
+          <a href="./metrics.html" class="nav-link active">Metrics</a>
         </div>
         <button class="menu-toggle" data-testid="mobile-nav-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
       </nav>
     </header>
 
     <main data-testid="main-content" data-page="metrics">
-      <h1>Metrics</h1>
-      <p>help users manage and organize household chores and tasks</p>
-      <!-- GLM will implement the full Metrics page content -->
+      <!-- Hero Section -->
+      <section id="hero-section" class="hero reveal">
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="gradient-text">Family Chore Performance Metrics</h1>
+            <p class="hero-subtitle">Track progress, identify patterns, and celebrate achievements in your household management journey</p>
+            <div class="hero-cta">
+              <button class="btn-primary">View Full Report</button>
+              <button class="btn-secondary">Export Data</button>
+            </div>
+          </div>
+        </div>
+        <div class="hero-orb"></div>
+      </section>
+
+      <!-- Task Completion Statistics -->
+      <section id="task-stats" class="reveal">
+        <div class="container">
+          <div class="section-label">Performance Overview</div>
+          <h2 class="section-title">Task Completion Statistics</h2>
+          
+          <div class="stats-grid">
+            <div class="stat-card glass-card">
+              <div class="stat-icon">✓</div>
+              <div class="stat-value">87%</div>
+              <div class="stat-label">Completion Rate</div>
+              <div class="stat-change positive">+5% from last month</div>
+            </div>
+            
+            <div class="stat-card glass-card">
+              <div class="stat-icon">⏱️</div>
+              <div class="stat-value">2.4 days</div>
+              <div class="stat-label">Avg. Completion Time</div>
+              <div class="stat-change negative">-0.3 days from last month</div>
+            </div>
+            
+            <div class="stat-card glass-card">
+              <div class="stat-icon">🏆</div>
+              <div class="stat-value">142</div>
+              <div class="stat-label">Tasks Completed</div>
+              <div class="stat-change positive">+23 from last month</div>
+            </div>
+            
+            <div class="stat-card glass-card">
+              <div class="stat-icon">🔔</div>
+              <div class="stat-value">12</div>
+              <div class="stat-label">Overdue Tasks</div>
+              <div class="stat-change negative">-4 from last month</div>
+            </div>
+          </div>
+          
+          <div class="chart-container glass-card">
+            <div class="chart-header">
+              <h3>Weekly Completion Trend</h3>
+              <div class="time-filter">
+                <button class="filter-btn active" data-period="week">Week</button>
+                <button class="filter-btn" data-period="month">Month</button>
+                <button class="filter-btn" data-period="quarter">Quarter</button>
+              </div>
+            </div>
+            <div class="chart" id="completion-chart">
+              <!-- Chart will be rendered by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Family Member Performance -->
+      <section id="family-performance" class="reveal">
+        <div class="container">
+          <div class="section-label">Family Members</div>
+          <h2 class="section-title">Individual Performance</h2>
+          
+          <div class="family-grid">
+            <div class="family-member-card glass-card">
+              <div class="member-header">
+                <div class="member-avatar">JD</div>
+                <div class="member-info">
+                  <h3>Jessica Davis</h3>
+                  <p>Parent</p>
+                </div>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 92%"></div>
+                </div>
+                <div class="progress-label">92% Completion</div>
+              </div>
+              <div class="member-stats">
+                <div class="stat-item">
+                  <span class="stat-label">Tasks:</span>
+                  <span class="stat-value">68</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Avg. Time:</span>
+                  <span class="stat-value">1.8 days</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="family-member-card glass-card">
+              <div class="member-header">
+                <div class="member-avatar">MD</div>
+                <div class="member-info">
+                  <h3>Michael Davis</h3>
+                  <p>Parent</p>
+                </div>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 85%"></div>
+                </div>
+                <div class="progress-label">85% Completion</div>
+              </div>
+              <div class="member-stats">
+                <div class="stat-item">
+                  <span class="stat-label">Tasks:</span>
+                  <span class="stat-value">52</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Avg. Time:</span>
+                  <span class="stat-value">2.1 days</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="family-member-card glass-card">
+              <div class="member-header">
+                <div class="member-avatar">SD</div>
+                <div class="member-info">
+                  <h3>Sophia Davis</h3>
+                  <p>Child (12)</p>
+                </div>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 78%"></div>
+                </div>
+                <div class="progress-label">78% Completion</div>
+              </div>
+              <div class="member-stats">
+                <div class="stat-item">
+                  <span class="stat-label">Tasks:</span>
+                  <span class="stat-value">41</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Avg. Time:</span>
+                  <span class="stat-value">2.7 days</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="family-member-card glass-card">
+              <div class="member-header">
+                <div class="member-avatar">AD</div>
+                <div class="member-info">
+                  <h3>Alex Davis</h3>
+                  <p>Child (8)</p>
+                </div>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 65%"></div>
+                </div>
+                <div class="progress-label">65% Completion</div>
+              </div>
+              <div class="member-stats">
+                <div class="stat-item">
+                  <span class="stat-label">Tasks:</span>
+                  <span class="stat-value">28</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Avg. Time:</span>
+                  <span class="stat-value">3.2 days</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="comparison-chart glass-card">
+            <h3>Task Type Comparison</h3>
+            <div class="chart" id="comparison-chart">
+              <!-- Chart will be rendered by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Task Completion Trends -->
+      <section id="completion-trends" class="reveal">
+        <div class="container">
+          <div class="section-label">Historical Data</div>
+          <h2 class="section-title">Completion Trends Over Time</h2>
+          
+          <div class="trend-filters">
+            <div class="filter-group">
+              <label>Time Period:</label>
+              <select class="filter-select">
+                <option>Last 7 days</option>
+                <option>Last 30 days</option>
+                <option>Last 90 days</option>
+                <option>Custom Range</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Task Category:</label>
+              <select class="filter-select">
+                <option>All Categories</option>
+                <option>Chores</option>
+                <option>School</option>
+                <option>Personal</option>
+                <option>Extra Credit</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="trend-chart glass-card">
+            <div class="chart-header">
+              <h3>Completion Rate Trend</h3>
+              <div class="chart-actions">
+                <button class="chart-action-btn">📊 Export</button>
+                <button class="chart-action-btn">📈 Share</button>
+              </div>
+            </div>
+            <div class="chart" id="trend-chart">
+              <!-- Chart will be rendered by JavaScript -->
+            </div>
+          </div>
+          
+          <div class="insights-container">
+            <div class="insight-card glass-card">
+              <h3>Key Insights</h3>
+              <ul class="insight-list">
+                <li>Weekend completion rates are 23% higher than weekdays</li>
+                <li>"Chores" category has the highest completion rate at 94%</li>
+                <li>Average completion time decreased by 15% after implementing the new reward system</li>
+                <li>Children complete tasks 2.3 days faster when assigned with a deadline</li>
+              </ul>
+            </div>
+            
+            <div class="insight-card glass-card">
+              <h3>Recommendations</h3>
+              <ul class="insight-list">
+                <li>Consider assigning more tasks on weekends when completion rates are highest</li>
+                <li>Focus on improving "School" category completion which is currently at 72%</li>
+                <li>Implement a reminder system for tasks that take longer than 3 days to complete</li>
+                <li>Celebrate weekly achievements to maintain motivation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer data-testid="footer-section">
-      <p>&copy; help users manage</p>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <h4>help users manage</h4>
+            <p>Making household chore management simple and effective for families.</p>
+          </div>
+          <div class="footer-column">
+            <h4>Features</h4>
+            <ul>
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./task-list.html">Task List</a></li>
+              <li><a href="./metrics.html">Metrics</a></li>
+              <li><a href="./login.html">Login</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+              <li>Help Center</li>
+              <li>Blog</li>
+              <li>Community</li>
+              <li>API Documentation</li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Connect</h4>
+            <ul>
+              <li>support@helpusersmanage.com</li>
+              <li>1-800-FAMILY</li>
+              <li>@helpusersmanage</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 help users manage. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
     <script src="./script.js"></script>

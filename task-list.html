@@ -3,33 +3,266 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>task list — help users manage</title>
-    <meta name="description" content="help users manage and organize household chores and tasks" />
+    <title>Task List — Help Users Manage</title>
+    <meta name="description" content="Manage and organize household chores and tasks for your family" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <header data-testid="site-header">
-      <nav data-testid="primary-nav">
-        <span class="brand">help users manage</span>
+      <nav data-testid="primary-nav" class="navbar">
+        <span class="brand">Help Users Manage</span>
         <div class="nav-links">
-        <a href="./index.html" class="nav-link">Home</a>
-        <a href="./task-list.html" class="nav-link active">task list</a>
-        <a href="./login.html" class="nav-link">login</a>
-        <a href="./metrics.html" class="nav-link">Metrics</a>
+          <a href="./index.html" class="nav-link">Home</a>
+          <a href="./task-list.html" class="nav-link active">Task List</a>
+          <a href="./login.html" class="nav-link">Login</a>
+          <a href="./metrics.html" class="nav-link">Metrics</a>
         </div>
-        <button class="menu-toggle" data-testid="mobile-nav-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+        <button class="menu-toggle" data-testid="mobile-nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
       </nav>
+      <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+        <a href="./index.html" class="nav-link">Home</a>
+        <a href="./task-list.html" class="nav-link active">Task List</a>
+        <a href="./login.html" class="nav-link">Login</a>
+        <a href="./metrics.html" class="nav-link">Metrics</a>
+      </div>
     </header>
 
     <main data-testid="main-content" data-page="task-list">
-      <h1>task list</h1>
-      <p>help users manage and organize household chores and tasks</p>
-      <!-- GLM will implement the full task list page content -->
+      <section id="hero-section" class="hero reveal">
+        <div class="container">
+          <h1 class="gradient-text">Family Task Management</h1>
+          <p class="text-lg">Keep your household running smoothly with organized chore assignments and deadlines</p>
+          <button class="btn-primary btn-large" id="add-task-btn" aria-label="Add new task">
+            <span>➕ Add New Task</span>
+          </button>
+        </div>
+        <div class="hero-orb"></div>
+      </section>
+
+      <section id="filter-controls" class="reveal">
+        <div class="container">
+          <div class="section-label">Filter Tasks</div>
+          <div class="filter-controls">
+            <div class="filter-group">
+              <label for="assignee-filter">Assigned to:</label>
+              <select id="assignee-filter" class="filter-select">
+                <option value="all">Everyone</option>
+                <option value="mom">Mom</option>
+                <option value="dad">Dad</option>
+                <option value="child1">Emma</option>
+                <option value="child2">Liam</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="status-filter">Status:</label>
+              <select id="status-filter" class="filter-select">
+                <option value="all">All Tasks</option>
+                <option value="pending">Pending</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="priority-filter">Priority:</label>
+              <select id="priority-filter" class="filter-select">
+                <option value="all">All Priorities</option>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="search-tasks">Search:</label>
+              <input type="text" id="search-tasks" class="search-input" placeholder="Search tasks...">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="task-grid" class="reveal">
+        <div class="container">
+          <div class="section-label">Family Tasks</div>
+          <div class="tasks-grid" id="tasks-container">
+            <!-- Task cards will be dynamically inserted here -->
+          </div>
+        </div>
+      </section>
+
+      <section id="task-stats" class="reveal">
+        <div class="container">
+          <div class="section-label">Task Overview</div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number" id="total-tasks">0</div>
+              <div class="stat-label">Total Tasks</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="pending-tasks">0</div>
+              <div class="stat-label">Pending</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="completed-tasks">0</div>
+              <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" id="overdue-tasks">0</div>
+              <div class="stat-label">Overdue</div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer data-testid="footer-section">
-      <p>&copy; help users manage</p>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <h3>Help Users Manage</h3>
+            <p>Simplifying household chore management for busy families</p>
+          </div>
+          <div class="footer-column">
+            <h4>Navigation</h4>
+            <ul>
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./task-list.html">Task List</a></li>
+              <li><a href="./login.html">Login</a></li>
+              <li><a href="./metrics.html">Metrics</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#">Family Tips</a></li>
+              <li><a href="#">Task Templates</a></li>
+              <li><a href="#">Parent Guide</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Connect</h4>
+            <ul>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Support</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 Help Users Manage. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
+
+    <!-- Add Task Modal -->
+    <div id="add-task-modal" class="modal" aria-hidden="true">
+      <div class="modal-content glass-card">
+        <div class="modal-header">
+          <h2>Add New Task</h2>
+          <button class="modal-close" aria-label="Close modal">&times;</button>
+        </div>
+        <form id="add-task-form">
+          <div class="form-group">
+            <label for="task-title">Task Title</label>
+            <input type="text" id="task-title" required>
+          </div>
+          <div class="form-group">
+            <label for="task-description">Description</label>
+            <textarea id="task-description" rows="3"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="task-assignee">Assigned to</label>
+              <select id="task-assignee" required>
+                <option value="mom">Mom</option>
+                <option value="dad">Dad</option>
+                <option value="child1">Emma</option>
+                <option value="child2">Liam</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="task-deadline">Deadline</label>
+              <input type="date" id="task-deadline" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="task-priority">Priority</label>
+            <select id="task-priority" required>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" id="cancel-add-task">Cancel</button>
+            <button type="submit" class="btn-primary">Add Task</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Edit Task Modal -->
+    <div id="edit-task-modal" class="modal" aria-hidden="true">
+      <div class="modal-content glass-card">
+        <div class="modal-header">
+          <h2>Edit Task</h2>
+          <button class="modal-close" aria-label="Close modal">&times;</button>
+        </div>
+        <form id="edit-task-form">
+          <input type="hidden" id="edit-task-id">
+          <div class="form-group">
+            <label for="edit-task-title">Task Title</label>
+            <input type="text" id="edit-task-title" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-task-description">Description</label>
+            <textarea id="edit-task-description" rows="3"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="edit-task-assignee">Assigned to</label>
+              <select id="edit-task-assignee" required>
+                <option value="mom">Mom</option>
+                <option value="dad">Dad</option>
+                <option value="child1">Emma</option>
+                <option value="child2">Liam</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="edit-task-deadline">Deadline</label>
+              <input type="date" id="edit-task-deadline" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="edit-task-priority">Priority</label>
+            <select id="edit-task-priority" required>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="edit-task-status">Status</label>
+            <select id="edit-task-status" required>
+              <option value="pending">Pending</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" id="cancel-edit-task">Cancel</button>
+            <button type="submit" class="btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <script src="./script.js"></script>
   </body>
